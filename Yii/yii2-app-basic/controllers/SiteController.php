@@ -125,4 +125,11 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    // Saying Hello
+    // https://www.yiiframework.com/doc/guide/2.0/en/start-hello
+    public function actionSay($message = 'Hello')
+    {
+        return $this->render('say', ['message' => $message]);
+    }
 }
