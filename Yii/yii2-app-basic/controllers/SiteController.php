@@ -10,6 +10,10 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+// Working with Forms
+// https://www.yiiframework.com/doc/guide/2.0/en/start-forms
+use app\models\EntryForm;
+
 class SiteController extends Controller
 {
     /**
@@ -131,5 +135,23 @@ class SiteController extends Controller
     public function actionSay($message = 'Hello')
     {
         return $this->render('say', ['message' => $message]);
+    }
+
+    // Working with Forms
+    // https://www.yiiframework.com/doc/guide/2.0/en/start-forms
+    public function actionEntry()
+    {
+        $model = new EntryForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // valid data received in $model
+
+            // do something meaningful here about $model ...
+
+            return $this->render('entry-confirm', ['model' => $model]);
+        } else {
+            // either the page is initially displayed or there is some validation error
+            return $this->render('entry', ['model' => $model]);
+        }
     }
 }
