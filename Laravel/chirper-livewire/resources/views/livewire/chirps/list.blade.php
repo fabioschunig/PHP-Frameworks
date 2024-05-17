@@ -2,6 +2,7 @@
 
 use App\Models\Chirp;
 use Illuminate\Database\Eloquent\Collection;
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component
@@ -9,6 +10,12 @@ new class extends Component
     public Collection $chirps;
 
     public function mount(): void
+    {
+        $this->getChirps();
+    }
+
+    #[On('chirp-created')]
+    public function getChirps(): void
     {
         $this->chirps = Chirp::with('user')
             ->latest()
