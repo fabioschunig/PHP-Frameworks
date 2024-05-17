@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
 
@@ -12,7 +13,9 @@ new class extends Component
     {
         $validated = $this->validate();
 
-        auth()->user()->chirps()->create($validated);
+        $user = auth()->user();
+        /** @var User $user */
+        $user->chirps()->create($validated);
 
         $this->message = '';
     }
