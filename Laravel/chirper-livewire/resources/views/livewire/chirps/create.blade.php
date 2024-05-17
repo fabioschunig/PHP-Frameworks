@@ -18,6 +18,8 @@ new class extends Component
         $user->chirps()->create($validated);
 
         $this->message = '';
+
+        $this->dispatch('chirp-created');
     }
 }; ?>
 
