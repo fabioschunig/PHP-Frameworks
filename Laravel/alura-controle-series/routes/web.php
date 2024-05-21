@@ -13,5 +13,5 @@ Route::get('/hello', function () {
 
 Route::get('/series', [
     SeriesController::class,
-    'listarSeries',
+    'index',
 ]);
