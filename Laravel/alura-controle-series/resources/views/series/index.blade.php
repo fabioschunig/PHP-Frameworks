@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <title>Séries</title>
-</head>
-
-<body>
-    <h1>Séries</h1>
-
+<x-layout title="Séries">
     <ul>
         @foreach ($series as $serie)
-        <li>{{$serie}}</li>
+        <li>{{ $serie }}</li>
         @endforeach
     </ul>
-</body>
-
-</html>
+</x-layout>
