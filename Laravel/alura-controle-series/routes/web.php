@@ -20,3 +20,8 @@ Route::get('/series/create', [
     SeriesController::class,
     'create',
 ]);
+
+Route::post('/series/save', [
+    SeriesController::class,
+    'store',
+]);
