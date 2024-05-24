@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $series = [
-            'Punisher',
-            'Lost',
-            'Grey\'s Anatomy',
-        ];
+        $series = DB::select('SELECT nome FROM series');
+        dd($series);
 
         return view('series.index')->with('series', $series);
     }
