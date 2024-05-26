@@ -17,7 +17,7 @@ class SeriesController extends Controller
         $series = Serie::query()->orderBy('nome')->get();
 
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
-        $request->session()->forget('mensagem.sucesso');
+        // $request->session()->forget('mensagem.sucesso');
 
         // dd($series);
 
@@ -43,6 +43,8 @@ class SeriesController extends Controller
 
         Serie::create($request->all());
 
+        session()->flash('mensagem.sucesso', 'Série adicionada com sucesso');
+
         // return redirect('/series');
 
         return to_route('series.index');
@@ -54,7 +56,8 @@ class SeriesController extends Controller
 
         Serie::destroy($request->series);
 
-        $request->session()->put('mensagem.sucesso', 'Série removida com sucesso');
+        // $request->session()->put('mensagem.sucesso', 'Série removida com sucesso');
+        session()->flash('mensagem.sucesso', 'Série removida com sucesso');
 
         return to_route('series.index');
     }
