@@ -43,11 +43,12 @@ class SeriesController extends Controller
 
         $serie = Serie::create($request->all());
 
-        session()->flash('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
+        // session()->flash('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
 
         // return redirect('/series');
 
-        return to_route('series.index');
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
     }
 
     public function destroy(Serie $series, Request $request)
@@ -59,8 +60,10 @@ class SeriesController extends Controller
         $series->delete();
 
         // $request->session()->put('mensagem.sucesso', 'Série removida com sucesso');
-        session()->flash('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
 
-        return to_route('series.index');
+        // session()->flash('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
+
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
     }
 }
