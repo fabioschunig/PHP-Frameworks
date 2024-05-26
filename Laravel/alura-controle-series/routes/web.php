@@ -33,4 +33,5 @@ Route::get('/hello', function () {
 //     Route::post('/series/save', 'store');
 // });
 
-Route::resource('/series', SeriesController::class);
+Route::resource('/series', SeriesController::class)
+    ->only(['index', 'create', 'store']);
