@@ -34,7 +34,7 @@ Route::get('/hello', function () {
 // });
 
 Route::resource('/series', SeriesController::class)
-    ->only(['index', 'create', 'store']);
+    ->only(['index', 'create', 'store', 'destroy']);
 
-Route::post('/series/destroy/{id}', [SeriesController::class, 'destroy'])
-    ->name('series.destroy');
+// Route::post('/series/destroy/{id}', [SeriesController::class, 'destroy'])
+//     ->name('series.destroy');

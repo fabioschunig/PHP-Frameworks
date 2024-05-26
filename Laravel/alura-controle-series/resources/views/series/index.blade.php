@@ -8,6 +8,7 @@
 
             <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
                 @csrf
+                @method('DELETE')
                 <button class="btn btn-danger btn-sm">X</button>
             </form>
         </li>
