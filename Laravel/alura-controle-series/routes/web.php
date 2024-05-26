@@ -27,8 +27,10 @@ Route::get('/hello', function () {
 //     'store',
 // ]);
 
-Route::controller(SeriesController::class)->group(function () {
-    Route::get('/series', 'index');
-    Route::get('/series/create', 'create');
-    Route::post('/series/save', 'store');
-});
+// Route::controller(SeriesController::class)->group(function () {
+//     Route::get('/series', 'index');
+//     Route::get('/series/create', 'create');
+//     Route::post('/series/save', 'store');
+// });
+
+Route::resource('/series', SeriesController::class);
