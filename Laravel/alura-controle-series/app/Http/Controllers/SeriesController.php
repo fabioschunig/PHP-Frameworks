@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // $series = DB::select('SELECT nome FROM series');
 
@@ -16,9 +16,14 @@ class SeriesController extends Controller
 
         $series = Serie::query()->orderBy('nome')->get();
 
+        $mensagemSucesso = $request->session()->get('mensagem.sucesso');
+        $request->session()->forget('mensagem.sucesso');
+
         // dd($series);
 
-        return view('series.index')->with('series', $series);
+        return view('series.index')
+            ->with('series', $series)
+            ->with('mensagemSucesso', $mensagemSucesso);
     }
 
     public function create()
@@ -48,6 +53,8 @@ class SeriesController extends Controller
         // dd($request->series);
 
         Serie::destroy($request->series);
+
+        $request->session()->put('mensagem.sucesso', 'Série removida com sucesso');
 
         return to_route('series.index');
     }
