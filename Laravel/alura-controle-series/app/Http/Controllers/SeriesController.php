@@ -75,7 +75,8 @@ class SeriesController extends Controller
 
     public function update(Serie $series, Request $request)
     {
-        $series->nome = $request->get('nome');
+        // $series->nome = $request->get('nome');
+        $series->fill($request->all());
         $series->save();
 
         return to_route('series.index')
