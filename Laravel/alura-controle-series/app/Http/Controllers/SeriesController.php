@@ -41,6 +41,10 @@ class SeriesController extends Controller
         // $serie->nome = $nomeSerie;
         // $serie->save();
 
+        $request->validate([
+            'nome' => ['required', 'min:3'],
+        ]);
+
         $serie = Serie::create($request->all());
 
         // session()->flash('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
@@ -76,6 +80,11 @@ class SeriesController extends Controller
     public function update(Serie $series, Request $request)
     {
         // $series->nome = $request->get('nome');
+
+        $request->validate([
+            'nome' => ['required', 'min:3'],
+        ]);
+
         $series->fill($request->all());
         $series->save();
 
