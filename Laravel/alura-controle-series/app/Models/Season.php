@@ -13,4 +13,9 @@ class Season extends Model
     {
         $this->belongsTo(Serie::class);
     }
+
+    public function episodes()
+    {
+        $this->hasMany(Episode::class);
+    }
 }
