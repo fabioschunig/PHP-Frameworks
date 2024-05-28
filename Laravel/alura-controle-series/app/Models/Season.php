@@ -11,7 +11,7 @@ class Season extends Model
 
     public function series()
     {
-        $this->belongsTo(Serie::class);
+        $this->belongsTo(Series::class);
     }
 
     public function episodes()
