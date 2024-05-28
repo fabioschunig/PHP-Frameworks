@@ -13,9 +13,9 @@ class SeriesController extends Controller
     {
         // $series = DB::select('SELECT nome FROM series');
 
-        // $series = Serie::all();
+        $series = Serie::all();
 
-        $series = Serie::query()->orderBy('nome')->get();
+        // $series = Serie::query()->orderBy('nome')->get();
 
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         // $request->session()->forget('mensagem.sucesso');
