@@ -22,15 +22,15 @@ class SeriesFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => ['required', 'min:3'],
+            'name' => ['required', 'min:3'],
         ];
     }
 
     public function messages()
     {
         return [
-            'nome.required' => 'Campo nome é obrigatório',
-            'nome.min' => 'Campo nome precisa de no mínimo :min caracteres',
+            'name.required' => 'Campo nome é obrigatório',
+            'name.min' => 'Campo nome precisa de no mínimo :min caracteres',
         ];
     }
 }

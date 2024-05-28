@@ -11,11 +11,11 @@ class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        // $series = DB::select('SELECT nome FROM series');
+        // $series = DB::select('SELECT name FROM series');
 
         $series = Serie::all();
 
-        // $series = Serie::query()->orderBy('nome')->get();
+        // $series = Serie::query()->orderBy('name')->get();
 
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         // $request->session()->forget('mensagem.sucesso');
@@ -34,22 +34,22 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
-        // $nomeSerie = $request->input('nome');
+        // $seriesName = $request->input('name');
 
-        // DB::insert('INSERT INTO series (nome) VALUES (?)', [$nomeSerie]);
+        // DB::insert('INSERT INTO series (name) VALUES (?)', [$seriesName]);
 
         // $serie = new Serie();
-        // $serie->nome = $nomeSerie;
+        // $serie->name = $seriesName;
         // $serie->save();
 
         $serie = Serie::create($request->all());
 
-        // session()->flash('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
+        // session()->flash('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso");
 
         // return redirect('/series');
 
         return to_route('series.index')
-            ->with('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
+            ->with('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso");
     }
 
     public function destroy(Serie $series, Request $request)
@@ -62,10 +62,10 @@ class SeriesController extends Controller
 
         // $request->session()->put('mensagem.sucesso', 'Série removida com sucesso');
 
-        // session()->flash('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
+        // session()->flash('mensagem.sucesso', "Série '{$series->name}' removida com sucesso");
 
         return to_route('series.index')
-            ->with('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
+            ->with('mensagem.sucesso', "Série '{$series->name}' removida com sucesso");
     }
 
     public function edit(Serie $series)
@@ -78,12 +78,12 @@ class SeriesController extends Controller
 
     public function update(Serie $series, SeriesFormRequest $request)
     {
-        // $series->nome = $request->get('nome');
+        // $series->name = $request->get('name');
 
         $series->fill($request->all());
         $series->save();
 
         return to_route('series.index')
-            ->with('mensagem.sucesso', "Série '{$series->nome}' alterada com sucesso");
+            ->with('mensagem.sucesso', "Série '{$series->name}' alterada com sucesso");
     }
 }
