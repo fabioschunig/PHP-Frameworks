@@ -15,7 +15,7 @@ class SeriesController extends Controller
 
         $series = Series::all();
 
-        // $series = Serie::query()->orderBy('name')->get();
+        // $series = Series::query()->orderBy('name')->get();
 
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         // $request->session()->forget('mensagem.sucesso');
@@ -38,26 +38,26 @@ class SeriesController extends Controller
 
         // DB::insert('INSERT INTO series (name) VALUES (?)', [$seriesName]);
 
-        // $serie = new Serie();
-        // $serie->name = $seriesName;
-        // $serie->save();
+        // $series = new Series();
+        // $series->name = $seriesName;
+        // $series->save();
 
-        dd($request->all());
+        // dd($request->all());
 
-        $serie = Series::create($request->all());
+        $series = Series::create($request->all());
 
-        // session()->flash('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso");
+        // session()->flash('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
 
         // return redirect('/series');
 
         return to_route('series.index')
-            ->with('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso");
+            ->with('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
     }
 
     public function destroy(Series $series, Request $request)
     {
         // dd($request->series);
-        //Serie::destroy($request->series);
+        //Series::destroy($request->series);
 
         // dd($series);
         $series->delete();
@@ -75,7 +75,7 @@ class SeriesController extends Controller
         // dd($series->seasons);
 
         return view('series.edit')
-            ->with('serie', $series);
+            ->with('series', $series);
     }
 
     public function update(Series $series, SeriesFormRequest $request)
