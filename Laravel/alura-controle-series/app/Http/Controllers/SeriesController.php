@@ -42,6 +42,8 @@ class SeriesController extends Controller
         // $serie->name = $seriesName;
         // $serie->save();
 
+        dd($request->all());
+
         $serie = Series::create($request->all());
 
         // session()->flash('mensagem.sucesso', "Série '{$serie->name}' adicionada com sucesso");
