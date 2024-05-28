@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Models\Episode;
+use App\Models\Season;
 use App\Models\Series;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,17 +48,33 @@ class SeriesController extends Controller
 
         $series = Series::create($request->all());
 
+        $seasons = [];
         for ($i = 1; $i <= $request->seasonsNumber; $i++) {
-            $season = $series->seasons()->create([
-                'number' => $i,
-            ]);
+            // $season = $series->seasons()->create([
+            //     'number' => $i,
+            // ]);
 
+            $seasons[] = [
+                'series_id' => $series->id,
+                'number' => $i,
+            ];
+        }
+        Season::insert($seasons);
+
+        $episodes = [];
+        foreach ($series->seasons as $season) {
             for ($j = 1; $j <= $request->episodesNumber; $j++) {
-                $season->episodes()->create([
+                // $season->episodes()->create([
+                //     'number' => $j,
+                // ]);
+
+                $episodes[] = [
+                    'season_id' => $season->id,
                     'number' => $j,
-                ]);
+                ];
             }
         }
+        Episode::insert($episodes);
 
         // session()->flash('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
 
