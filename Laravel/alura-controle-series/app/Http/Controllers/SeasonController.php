@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class SeasonController extends Controller
 {
-    // public function index(Series $series)
-    public function index(int $series)
+    public function index(Series $series)
+    // public function index(int $series)
     {
         // $seasons = $series->seasons;
 
-        // $seasons = $series->seasons()->with('episodes')->get();
+        $seasons = $series->seasons()->with('episodes')->get();
 
-        $seasons = Season::query()
-            ->with('episodes')
-            ->where('series_id', $series)
-            ->get();
+        // $seasons = Season::query()
+        //     ->with('episodes')
+        //     ->where('series_id', $series)
+        //     ->get();
 
         return view('seasons.index')
             ->with('series', $series)
