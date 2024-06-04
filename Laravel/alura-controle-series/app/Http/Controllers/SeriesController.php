@@ -46,9 +46,7 @@ class SeriesController extends Controller
 
         // dd($request->all());
 
-        $series = null;
-
-        DB::transaction(function () use ($request, &$series) {
+        $series = DB::transaction(function () use ($request) {
             $series = Series::create($request->all());
 
             $seasons = [];
@@ -78,6 +76,8 @@ class SeriesController extends Controller
                 }
             }
             Episode::insert($episodes);
+
+            return $series;
         });
 
         // session()->flash('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
