@@ -46,35 +46,39 @@ class SeriesController extends Controller
 
         // dd($request->all());
 
-        $series = Series::create($request->all());
+        $series = null;
 
-        $seasons = [];
-        for ($i = 1; $i <= $request->seasonsNumber; $i++) {
-            // $season = $series->seasons()->create([
-            //     'number' => $i,
-            // ]);
+        DB::transaction(function () use ($request, &$series) {
+            $series = Series::create($request->all());
 
-            $seasons[] = [
-                'series_id' => $series->id,
-                'number' => $i,
-            ];
-        }
-        Season::insert($seasons);
-
-        $episodes = [];
-        foreach ($series->seasons as $season) {
-            for ($j = 1; $j <= $request->episodesNumber; $j++) {
-                // $season->episodes()->create([
-                //     'number' => $j,
+            $seasons = [];
+            for ($i = 1; $i <= $request->seasonsNumber; $i++) {
+                // $season = $series->seasons()->create([
+                //     'number' => $i,
                 // ]);
 
-                $episodes[] = [
-                    'season_id' => $season->id,
-                    'number' => $j,
+                $seasons[] = [
+                    'series_id' => $series->id,
+                    'number' => $i,
                 ];
             }
-        }
-        Episode::insert($episodes);
+            Season::insert($seasons);
+
+            $episodes = [];
+            foreach ($series->seasons as $season) {
+                for ($j = 1; $j <= $request->episodesNumber; $j++) {
+                    // $season->episodes()->create([
+                    //     'number' => $j,
+                    // ]);
+
+                    $episodes[] = [
+                        'season_id' => $season->id,
+                        'number' => $j,
+                    ];
+                }
+            }
+            Episode::insert($episodes);
+        });
 
         // session()->flash('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
 
