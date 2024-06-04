@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
-use App\Models\Episode;
-use App\Models\Season;
 use App\Models\Series;
 use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
+    public function __construct(private SeriesRepository $repository)
+    {
+    }
+
     public function index(Request $request)
     {
         // $series = DB::select('SELECT name FROM series');
@@ -35,7 +36,7 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(SeriesFormRequest $request, SeriesRepository $repository)
+    public function store(SeriesFormRequest $request)
     {
         // $seriesName = $request->input('name');
 
@@ -47,7 +48,7 @@ class SeriesController extends Controller
 
         // dd($request->all());
 
-        $series = $repository->add($request);
+        $series = $this->repository->add($request);
 
         // session()->flash('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
 
