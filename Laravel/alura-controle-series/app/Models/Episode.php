@@ -19,8 +19,8 @@ class Episode extends Model
         return $this->belongsTo(Season::class);
     }
 
-    public function scopeWatched(Builder $query)
-    {
-        $query->where('watched', true);
-    }
+    // public function scopeWatched(Builder $query)
+    // {
+    //     $query->where('watched', true);
+    // }
 }
