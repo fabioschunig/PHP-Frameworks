@@ -3,13 +3,14 @@
 use App\Http\Controllers\EpisodesController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Middleware\Authenticator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
     return redirect('series');
-});
+})->middleware(Authenticator::class);
 
 Route::get('/hello', function () {
     return "Hello, world!";
