@@ -8,4 +8,9 @@ class UserController
     {
         return view('users.create');
     }
+
+    public function store()
+    {
+        return "user.store";
+    }
 }

@@ -63,3 +63,6 @@ Route::post('/login', [LoginController::class, 'store'])
 
 Route::get('/user/create', [UserController::class, 'create'])
     ->name('user.create');
+
+Route::post('/user/create', [UserController::class, 'store'])
+    ->name('user.store');
