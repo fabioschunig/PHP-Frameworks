@@ -22,4 +22,11 @@ class LoginController
 
         return to_route('series.index');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('login');
+    }
 }

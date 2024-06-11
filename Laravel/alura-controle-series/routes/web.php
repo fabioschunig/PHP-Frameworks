@@ -61,6 +61,9 @@ Route::get('/login', [LoginController::class, 'index'])
 Route::post('/login', [LoginController::class, 'store'])
     ->name('signin');
 
+Route::get('/logout', [LoginController::class, 'logout'])
+    ->name('logout');
+
 Route::get('/user/create', [UserController::class, 'create'])
     ->name('user.create');
 
