@@ -9,5 +9,6 @@
         <input type="password" name="password" id="password" class="form-control">
 
         <button type="submit" class="btn btn-primary mt-2 mb-2">Entrar</button>
+        <a href="{{ route('user.create') }}" class="btn btn-secondary mt-2 mb-2">Registrar usuário</a>
     </form>
 </x-layout>

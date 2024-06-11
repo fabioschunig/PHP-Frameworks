@@ -4,6 +4,7 @@ use App\Http\Controllers\EpisodesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -59,3 +60,6 @@ Route::get('/login', [LoginController::class, 'index'])
 
 Route::post('/login', [LoginController::class, 'store'])
     ->name('signin');
+
+Route::get('/user/create', [UserController::class, 'create'])
+    ->name('user.create');
