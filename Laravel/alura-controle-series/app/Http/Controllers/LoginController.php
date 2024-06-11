@@ -16,8 +16,10 @@ class LoginController
     {
         // dd(Auth::attempt($request->all()));
 
-        if (!Auth::attempt($request->all())) {
-            return redirect()->back()->withErrors(['Erro ao fazer login']);
+        if (!Auth::attempt($request->only(['email', 'password']))) {
+            return redirect()->back()->withErrors('Usuário ou senha inválidos');
         }
+
+        return to_route('series.index');
     }
 }
