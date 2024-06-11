@@ -14,6 +14,10 @@ class LoginController
 
     public function store(Request $request)
     {
-        dd(Auth::attempt($request->all()));
+        // dd(Auth::attempt($request->all()));
+
+        if (!Auth::attempt($request->all())) {
+            return redirect()->back()->withErrors(['Erro ao fazer login']);
+        }
     }
 }
