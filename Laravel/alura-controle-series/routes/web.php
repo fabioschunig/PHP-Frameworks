@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EpisodesController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Middleware\Authenticator;
@@ -52,3 +53,6 @@ Route::get('seasons/{season}/episodes', [EpisodesController::class, 'index'])
 
 Route::post('seasons/{season}/episodes',  [EpisodesController::class, 'update'])
     ->name('episodes.update');
+
+Route::get('/login', [LoginController::class, 'index'])
+    ->name('login');
