@@ -17,6 +17,10 @@
             @auth
             <a class="btn btn-sm bg-secondary text-light" href="{{ route('logout') }}">Sair</a>
             @endauth
+
+            @guest
+            <a class="btn btn-sm bg-secondary text-light" href="{{ route('login') }}">Entrar</a>
+            @endguest
         </div>
     </nav>
 
