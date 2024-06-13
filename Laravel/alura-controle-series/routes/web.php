@@ -9,11 +9,6 @@ use App\Http\Middleware\Authenticator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('series');
-})->middleware(Authenticator::class);
-
 Route::get('/hello', function () {
     return "Hello, world!";
 });
@@ -46,14 +41,26 @@ Route::resource('/series', SeriesController::class)
 // Route::post('/series/destroy/{id}', [SeriesController::class, 'destroy'])
 //     ->name('series.destroy');
 
+//Route::middleware('autenticador')->group(function () {
+
+Route::get('/', function () {
+    // return view('welcome');
+    return redirect('series');
+})->middleware(Authenticator::class);
+
 Route::get('/series/{series}/seasons', [SeasonController::class, 'index'])
-    ->name('seasons.index');
+    ->name('seasons.index')
+    ->middleware(Authenticator::class);
 
 Route::get('seasons/{season}/episodes', [EpisodesController::class, 'index'])
-    ->name('episodes.index');
+    ->name('episodes.index')
+    ->middleware(Authenticator::class);
 
 Route::post('seasons/{season}/episodes',  [EpisodesController::class, 'update'])
-    ->name('episodes.update');
+    ->name('episodes.update')
+    ->middleware(Authenticator::class);
+
+//});
 
 Route::get('/login', [LoginController::class, 'index'])
     ->name('login');
