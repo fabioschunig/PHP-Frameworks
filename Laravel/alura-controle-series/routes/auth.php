@@ -63,9 +63,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/series', SeriesController::class)
         ->except(['show']);
 
-    Route::get('/', function () {
-        return redirect('series');
-    });
+    // Route::get('/', function () {
+    //     return redirect('series');
+    // });
 
     Route::get('/series/{series}/seasons', [SeasonController::class, 'index'])
         ->name('seasons.index');
