@@ -13,7 +13,10 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('series.index') }}">Home</a>
+
+            @auth
             <a class="btn btn-sm bg-secondary text-light" href="{{ route('logout') }}">Sair</a>
+            @endauth
         </div>
     </nav>
 
