@@ -1,1 +1,5 @@
-Nova série criada
+@component('mail::message')
+
+Série criada
+
+@endcomponent

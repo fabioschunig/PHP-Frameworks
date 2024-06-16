@@ -37,7 +37,8 @@ class SeriesCreated extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.series-created',
+            // view: 'mail.series-created',
+            markdown: 'mail.series-created',
         );
     }
 
