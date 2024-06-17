@@ -16,8 +16,12 @@ class SeriesCreated extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
+    public function __construct(
+        public string $nomeSerie,
+        public int $seriesId,
+        public int $qtdTemporadas,
+        public int $qtdEpisodios,
+    ) {
         //
     }
 

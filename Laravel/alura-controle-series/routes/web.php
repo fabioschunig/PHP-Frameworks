@@ -20,5 +20,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/email', function () {
-    return new App\Mail\SeriesCreated();
+    return new App\Mail\SeriesCreated(
+        "Nome teste",
+        13,
+        5,
+        15,
+    );
 });
