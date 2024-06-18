@@ -15,7 +15,12 @@
             <a class="navbar-brand" href="{{ route('series.index') }}">Home</a>
 
             @auth
-            <a class="btn btn-sm bg-secondary text-light" href="{{ route('logout') }}">Sair</a>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <a class="btn btn-sm bg-secondary text-light" href="#" onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
+            </form>
             @endauth
 
             @guest
