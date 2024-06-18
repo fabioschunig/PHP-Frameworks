@@ -65,7 +65,8 @@ class SeriesController extends Controller
                 $request->seasonsNumber,
                 $request->episodesNumber,
             );
-            Mail::to($user)->send($email);
+            // Mail::to($user)->send($email);
+            Mail::to($user)->queue($email);
         }
 
         return to_route('series.index')
