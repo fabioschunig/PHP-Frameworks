@@ -19,7 +19,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <a class="btn btn-sm bg-secondary text-light" href="#" onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
+                <a class="btn btn-sm bg-secondary text-light" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
             </form>
             @endauth
 
