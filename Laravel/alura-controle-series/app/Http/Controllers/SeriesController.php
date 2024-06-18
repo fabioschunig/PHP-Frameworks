@@ -58,7 +58,7 @@ class SeriesController extends Controller
         // return redirect('/series');
 
         $userList = User::all();
-        foreach ($userList as $user) {
+        foreach ($userList as $index => $user) {
             $email = new SeriesCreated(
                 $series->name,
                 $series->id,
@@ -66,7 +66,9 @@ class SeriesController extends Controller
                 $request->episodesNumber,
             );
             // Mail::to($user)->send($email);
-            Mail::to($user)->queue($email);
+            // Mail::to($user)->queue($email);
+            $when = now()->addSeconds($index * 5);
+            Mail::to($user)->later($when, $email);
         }
 
         return to_route('series.index')
