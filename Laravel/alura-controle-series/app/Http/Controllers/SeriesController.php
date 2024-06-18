@@ -71,6 +71,9 @@ class SeriesController extends Controller
             Mail::to($user)->later($when, $email);
         }
 
+        // to start a queue worker and process new jobs
+        // php artisan queue:work
+
         return to_route('series.index')
             ->with('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
     }
