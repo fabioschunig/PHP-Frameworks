@@ -17,8 +17,12 @@ class SeriesCreatedEvent
     /**
      * Create a new event instance.
      */
-    public function __construct()
-    {
+    public function __construct(
+        public readonly string $seriesName,
+        public readonly int $seriesId,
+        public readonly int $seriesSeasonsNumber,
+        public readonly int $seriesEpisodesNumber,
+    ) {
         //
     }
 
