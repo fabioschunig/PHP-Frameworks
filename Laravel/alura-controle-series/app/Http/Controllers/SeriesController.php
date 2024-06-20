@@ -53,6 +53,13 @@ class SeriesController extends Controller
 
         $series = $this->repository->add($request);
 
+        \App\Events\SeriesCreatedEvent::dispatch(
+            $series->name,
+            $series->id,
+            $request->seasonsNumber,
+            $request->episodesNumber,
+        );
+
         // session()->flash('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
 
         // return redirect('/series');
