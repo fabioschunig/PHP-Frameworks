@@ -57,23 +57,6 @@ class SeriesController extends Controller
 
         // return redirect('/series');
 
-        $userList = User::all();
-        foreach ($userList as $index => $user) {
-            $email = new SeriesCreated(
-                $series->name,
-                $series->id,
-                $request->seasonsNumber,
-                $request->episodesNumber,
-            );
-            // Mail::to($user)->send($email);
-            // Mail::to($user)->queue($email);
-            $when = now()->addSeconds($index * 5);
-            Mail::to($user)->later($when, $email);
-        }
-
-        // to start a queue worker and process new jobs
-        // php artisan queue:work
-
         return to_route('series.index')
             ->with('mensagem.sucesso', "Série '{$series->name}' adicionada com sucesso");
     }
