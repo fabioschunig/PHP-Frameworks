@@ -51,7 +51,9 @@ class SeriesController extends Controller
 
         // dd($request->all());
 
-        dd($request->file('cover'));
+        // dd($request->file('cover'));
+        $coverPath = $request->file('cover')->store('series_cover', 'public');
+        $request->coverPath = $coverPath;
 
         $series = $this->repository->add($request);
 
