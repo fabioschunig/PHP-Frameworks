@@ -51,6 +51,8 @@ class SeriesController extends Controller
 
         // dd($request->all());
 
+        dd($request->file('cover'));
+
         $series = $this->repository->add($request);
 
         \App\Events\SeriesCreatedEvent::dispatch(

@@ -1,6 +1,6 @@
 <x-layout title="Adicionar Série">
 
-    <form action="{{ route('series.store') }}" method="POST">
+    <form action="{{ route('series.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row mb-3">
