@@ -27,21 +27,21 @@ class SeriesRepositoryTest extends TestCase
         // Arrange
         $repository = $this->app->make(SeriesRepository::class);
 
-        /** @var $request */
-        // $request = new SeriesFormRequest();
+        $request = new SeriesFormRequest([
+            'name' => 'Série de teste',
+            'seasonsNumber' => 3,
+            'episodesNumber' => 3,
+        ]);
+
+        // $request->request->add([
+        //     'name' => 'Série de teste',
+        //     'seasonsNumber' => 3,
+        //     'episodesNumber' => 3,
+        // ]);
+
         // $request->name = 'Série de teste';
         // $request->seasonsNumber = 3;
         // $request->episodesNumber = 3;
-
-        $request = new SeriesFormRequest();
-
-        $request->setMethod('POST');
-
-        $request->request->add([
-            'name' => 'Série de teste',
-            'seasonsNumber' => '3',
-            'episodesNumber' => '3',
-        ]);
 
         // Act
         $repository->add($request);
