@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class SeriesRepositoryTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      */
