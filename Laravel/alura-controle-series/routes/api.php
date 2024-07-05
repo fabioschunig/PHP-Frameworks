@@ -11,5 +11,7 @@ Route::get('/user', function (Request $request) {
 //     return \App\Models\Series::all();
 // });
 
-Route::get('/series', [\App\Http\Controllers\Api\SeriesController::class, 'index'])
-    ->name('api.series.index');
+// Route::get('/series', [\App\Http\Controllers\Api\SeriesController::class, 'index'])
+//     ->name('api.series.index');
+
+Route::apiResource('/series', \App\Http\Controllers\Api\SeriesController::class);
