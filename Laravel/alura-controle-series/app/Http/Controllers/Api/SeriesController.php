@@ -36,7 +36,7 @@ class SeriesController extends Controller
         //     ->with('seasons.episodes')
         //     ->first();
 
-        $seriesModel = Series::find($seriesId);
+        $seriesModel = Series::with('seasons.episodes')->find($seriesId);
         if ($seriesModel === null) {
             return response()->json(['message' => 'Series not found'], 404);
         }
