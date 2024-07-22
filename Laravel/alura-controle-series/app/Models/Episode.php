@@ -15,6 +15,10 @@ class Episode extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'watched' => 'boolean',
+    ];
+
     public function season()
     {
         return $this->belongsTo(Season::class);
@@ -25,10 +29,10 @@ class Episode extends Model
     //     $query->where('watched', true);
     // }
 
-    public function watched(): Attribute
-    {
-        return new Attribute(
-            get: fn ($watched) => (bool) $watched,
-        );
-    }
+    // public function watched(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn ($watched) => (bool) $watched,
+    //     );
+    // }
 }
