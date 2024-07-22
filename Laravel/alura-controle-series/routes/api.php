@@ -30,9 +30,12 @@ Route::get('/series/{series}/seasons', [\App\Http\Controllers\Api\SeriesControll
 Route::get('/series/{series}/episodes', [\App\Http\Controllers\Api\SeriesController::class, 'episodes'])
     ->name('api.series.episodes');
 
-Route::patch('/episodes/{episode}', function (\App\Models\Episode $episode, Request $request) {
-    $episode->watched = $request->watched;
-    $episode->save();
+// Route::patch('/episodes/{episode}', function (\App\Models\Episode $episode, Request $request) {
+//     $episode->watched = $request->watched;
+//     $episode->save();
 
-    return $episode;
-});
+//     return $episode;
+// });
+
+Route::patch('/episodes/{episode}', [\App\Http\Controllers\Api\EpisodeController::class, 'watched'])
+    ->name('api.episode.watched');
