@@ -64,4 +64,9 @@ class SeriesController extends Controller
     {
         return $series->seasons;
     }
+
+    public function episodes(Series $series)
+    {
+        return $series->episodes;
+    }
 }
