@@ -37,7 +37,9 @@ class SeriesController extends Controller
         //     ->first();
 
         $seriesModel = Series::find($seriesId);
-        dd($seriesModel);
+        if ($seriesModel === null) {
+            return response()->json(['message' => 'Series not found'], 404);
+        }
 
         // return $series;
         return $seriesModel;
