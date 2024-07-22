@@ -16,9 +16,12 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('/series', \App\Http\Controllers\Api\SeriesController::class);
 
-Route::get('/series/{series}/seasons', function (\App\Models\Series $series) {
-    return $series->seasons;
-});
+// Route::get('/series/{series}/seasons', function (\App\Models\Series $series) {
+//     return $series->seasons;
+// });
+
+Route::get('/series/{series}/seasons', [\App\Http\Controllers\Api\SeriesController::class, 'seasons'])
+    ->name('api.series.seasons');
 
 Route::get('/series/{series}/episodes', function (\App\Models\Series $series) {
     return $series->episodes;

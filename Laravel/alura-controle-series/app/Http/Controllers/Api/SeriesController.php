@@ -59,4 +59,9 @@ class SeriesController extends Controller
 
         return response()->noContent();
     }
+
+    public function seasons(Series $series)
+    {
+        return $series->seasons;
+    }
 }
