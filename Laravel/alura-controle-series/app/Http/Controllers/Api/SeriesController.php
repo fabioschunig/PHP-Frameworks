@@ -32,11 +32,15 @@ class SeriesController extends Controller
     {
         // return $series;
 
-        $series = Series::where('id', $seriesId)
-            ->with('seasons.episodes')
-            ->first();
+        // $series = Series::where('id', $seriesId)
+        //     ->with('seasons.episodes')
+        //     ->first();
 
-        return $series;
+        $seriesModel = Series::find($seriesId);
+        dd($seriesModel);
+
+        // return $series;
+        return $seriesModel;
     }
 
     public function update(Series $series, SeriesFormRequest $request)
