@@ -18,12 +18,17 @@ class SeriesController extends Controller
     {
         // dd($request->has('name'));
 
+        $query = Series::query();
+
         if ($request->has('name')) {
             // return Series::whereName($request->name)->get();
-            return Series::where('name', $request->name)->get();
+
+            // return Series::where('name', $request->name)->get();
+
+            $query->where('name', $request->name);
         }
 
-        return Series::all();
+        return $query->get();
     }
 
     public function store(SeriesFormRequest $request)
