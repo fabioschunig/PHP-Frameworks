@@ -39,7 +39,15 @@ class Series extends Model
                 [
                     'rel' => 'self',
                     'url' => "/api/series/{$this->id}",
-                ]
+                ],
+                [
+                    'rel' => 'seasons',
+                    'url' => "/api/series/{$this->id}/seasons",
+                ],
+                [
+                    'rel' => 'episodes',
+                    'url' => "/api/series/{$this->id}/episodes",
+                ],
             ],
         );
     }
