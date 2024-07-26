@@ -28,7 +28,9 @@ class SeriesController extends Controller
             $query->where('name', $request->name);
         }
 
-        return $query->get();
+        // return $query->get();
+
+        return $query->paginate(5);
     }
 
     public function store(SeriesFormRequest $request)
