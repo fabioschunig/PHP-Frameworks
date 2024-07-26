@@ -19,7 +19,8 @@ class SeriesController extends Controller
         // dd($request->has('name'));
 
         if ($request->has('name')) {
-            return Series::whereName($request->name)->get();
+            // return Series::whereName($request->name)->get();
+            return Series::where('name', $request->name)->get();
         }
 
         return Series::all();
