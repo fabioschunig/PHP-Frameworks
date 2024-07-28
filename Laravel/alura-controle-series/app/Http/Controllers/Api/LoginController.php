@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController
 {
@@ -14,6 +15,11 @@ class LoginController
 
         $user = User::whereEmail($credentials['email'])
             ->first();
+
+        if (Hash::check($credentials['password'], $user->password) === false) {
+            return response()->json('Unauthorized', 401);
+        }
+
         dd($user);
     }
 }
