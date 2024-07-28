@@ -39,3 +39,8 @@ Route::get('/series/{series}/episodes', [\App\Http\Controllers\Api\SeriesControl
 
 Route::patch('/episodes/{episode}', [\App\Http\Controllers\Api\EpisodeController::class, 'watched'])
     ->name('api.episode.watched');
+
+Route::post('/login', function (Request $request) {
+    $credentials = $request->only(['email', 'password']);
+    dd($credentials);
+});
