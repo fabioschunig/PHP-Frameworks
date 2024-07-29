@@ -31,7 +31,9 @@ class LoginController
 
         $user->tokens()->delete();
 
-        $token = $request->user()->createToken('token');
+        // $token = $request->user()->createToken('token');
+        $token = $request->user()->createToken('token', 'series:delete');
+
         return response()->json($token->plainTextToken);
     }
 }
