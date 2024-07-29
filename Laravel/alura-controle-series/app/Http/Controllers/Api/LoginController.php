@@ -25,8 +25,11 @@ class LoginController
             return response()->json('Unauthorized', 401);
         }
 
+        /** @var User $user */
         $user = Auth::user();
         //dd($user);
+
+        $user->tokens()->delete();
 
         $token = $request->user()->createToken('token');
         return response()->json($token->plainTextToken);
