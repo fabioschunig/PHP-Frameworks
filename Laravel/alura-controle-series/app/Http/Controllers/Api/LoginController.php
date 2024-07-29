@@ -26,7 +26,9 @@ class LoginController
         }
 
         $user = Auth::user();
+        //dd($user);
 
-        dd($user);
+        $token = $request->user()->createToken('token');
+        return response()->json($token->plainTextToken);
     }
 }
